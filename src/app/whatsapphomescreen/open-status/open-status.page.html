@@ -1,0 +1,28 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar no-shadow class="toolbar">
+   
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-avatar slot="start" style="max-width: 50px; max-height:50px;">
+      <ion-img [src]="friends.imageUrl"></ion-img>
+    </ion-avatar>
+  
+    <h3>&nbsp;&nbsp;{{friends.name}}</h3>
+    <p> &nbsp;&nbsp;Today,
+      {{ friends.date|date:'shortTime'}}</p>
+
+    <ion-buttons slot="primary"  (click)="presentPopover($event)">
+        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-item>
+   
+      <ion-img src="./../../../assets/nature.jpg" class='img'></ion-img>
+    
+  </ion-item>
+
+</ion-content>

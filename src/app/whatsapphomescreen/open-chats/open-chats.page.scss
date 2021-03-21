@@ -1,0 +1,31 @@
+ion-item {
+    border-radius:50px ;
+   
+    margin-bottom: 2px;
+    border: 1px solid #686767;
+    
+    box-shadow: none ;
+}
+.msg{
+    padding-top: 0px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    white-space:pre-wrap;
+
+}
+
+.other-msg{
+    background: rgb(48, 142, 204);
+    color:black;
+}
+
+.my-msg{
+    background:rgb(252, 252, 176);
+    color: black;
+    
+}
+
+.time{
+    float: right;
+    font-size: small;
+}

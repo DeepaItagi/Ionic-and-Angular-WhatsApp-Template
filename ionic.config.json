@@ -1,0 +1,7 @@
+{
+  "name": "whatsAppTemplate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

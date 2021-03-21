@@ -1,0 +1,176 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar color="success">
+    <ion-title><b>WhatsApp</b></ion-title>
+  
+  <ion-buttons slot="primary" [routerLink]="['search']" >
+    <ion-icon name="search-outline"  slot="icon-only"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="end" (click)="presentPopover($event)">
+    <ion-button>
+      <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    
+  </ion-buttons>
+</ion-toolbar>
+ 
+  <ion-toolbar color="success" >
+    <ion-segment [(ngModel)]="type">
+      <ion-segment-button>
+        <ion-icon name="camera" ></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="chats">
+        <ion-label><strong>CHATS</strong></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="status">
+        <ion-label><strong>STATUS</strong></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="calls">
+        <ion-label><strong>CALLS</strong></ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-no-padding">
+
+<div [ngSwitch]="type">
+
+
+
+
+
+  <!--CHATS-->
+      <div  *ngSwitchCase="'chats'" >  
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button  color='success' type="button" [routerLink]="['selectcontact']">
+        
+        <ion-icon name="chatbox-ellipses"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+      <ion-list>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        
+            <ion-virtual-scroll
+          [items]="friends"
+          approxItemHeight="70px"
+          >
+            <ion-item
+            [routerLink]="['open-chats',friends.id]"
+            *virtualItem="let friends"
+            
+            >
+            <ion-avatar slot="start">
+              <ion-img [src]="friends.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ friends.name }}
+            <p class="ion-float-right"> {{friends.date| date:'shortDate'}}</p></h2>
+              <p>{{ friends.message }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-virtual-scroll>
+   
+  </ion-col>
+</ion-row>
+</ion-grid>
+</ion-list>
+  </div>
+
+
+
+
+  <!--STATUS-->
+  <div  *ngSwitchCase="'status'" >
+       <ion-item lines='none' class="item">
+          <ion-avatar slot="start" class="img">
+            <ion-img src="./../../assets/anonymous.png" ></ion-img>
+              <ion-icon name="add-circle" color="success" class="edge"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h2>My status</h2>
+              <h4>Tap to add status update</h4>
+            </ion-label>
+        </ion-item>
+        <h5 class=" ion-text-center heading ion-no-padding">Recent updates</h5>
+        <ion-grid>
+         <ion-row>
+          <ion-col>
+            
+        <ion-item *ngFor="let friends of friends" [routerLink]="['open-status',friends.id]">
+          <ion-avatar slot="start" class="avatar">
+            <ion-img [src]="friends.imageUrl"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Today, {{friends.date|date:'shortTime'}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <ion-toolbar slot="bottom"  class="ion-no-border">
+      <ion-fab vertical="center" horizontal="end">
+        <ion-fab-button  color='success'>
+          <ion-icon name="pencil"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-toolbar>
+    <ion-toolbar slot="bottom"  class="ion-no-border">
+      <ion-fab vertical="center" horizontal="end" >
+        <ion-fab-button  color='success'>
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      </ion-toolbar>
+   
+  </div>
+
+
+
+
+
+
+  <!--CALLS-->
+  <div *ngSwitchCase="'calls'">
+    <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item  *ngFor="let friends of friends">
+            <ion-avatar slot="start">
+              <ion-img [src]="friends.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ friends.name }}
+                <ion-icon name="call" color="success" slot="icon-only" class="ion-float-right"></ion-icon>
+              </h2>
+              <p><ion-icon name="arrow-up" color="success"></ion-icon>
+                {{ friends.date|date:'medium'}}</p>
+            </ion-label>
+          </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+    <ion-toolbar slot="bottom"  class="ion-no-border">
+      <ion-fab vertical="center" horizontal="end">
+        <ion-fab-button  color='success'>
+          <ion-icon name="videocam"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-toolbar>
+    <ion-toolbar slot="bottom"  class="ion-no-border" >
+   
+      <ion-fab vertical="center" horizontal="end">
+        <ion-fab-button  color='success'>
+          <ion-icon name="call"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-toolbar>
+   
+  </div>
+</div>
+
+</ion-content>
