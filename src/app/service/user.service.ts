@@ -20,36 +20,36 @@ export class UserService {
   ),
   new Friend(
     '2',
-    'Max',
-    './../../assets/img.png',
+    'Andrew',
+    './../../assets/image.jpg',
     'Hi',
     new Date()
   ),
   new Friend(
     '3',
-    'Max',
+    'Siri',
     './../../assets/img.png',
     'Hi',
     new Date()
   ),
   new Friend(
     '4',
-    'Max',
-    './../../assets/img.png',
+    'Sanvi',
+    './../../assets/img1.jpg',
     'Hi',
     new Date()
   ),
   new Friend(
     '5',
-    'Max',
-    './../../assets/img.png',
+    'Aradhya',
+    './../../assets/image.jpg',
     'Hi',
     new Date()
   ),
   new Friend(
     '6',
-    'Max',
-    './../../assets/img.png',
+    'Aditi',
+    './../../assets/img1.jpg',
     'Hi',
     new Date()
   )
